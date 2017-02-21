@@ -6,7 +6,7 @@ import { HEROES } from './mock-heroes';
 @Injectable()
 export class HeroService {
 
-  getHeroes(): Promise<Hero[]> {
+  getHeroes(): Promise<Hero[]> { // "Promise" it's a promise to call back us when the result is ready (asynchrone)
     return Promise.resolve(HEROES);
   }
 
@@ -16,5 +16,11 @@ export class HeroService {
     setTimeout(() => resolve(this.getHeroes()), 2000);
   });
 }
+
+getHero(id: number): Promise<Hero> {
+  return this.getHeroes()
+             .then(heroes => heroes.find(hero => hero.id === id));
+}
+
 
 }
