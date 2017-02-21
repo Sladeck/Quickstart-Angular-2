@@ -1,6 +1,7 @@
 # QUICKSTART for Angular 2
 
 This repo is a quickstart test to learn Angular 2.
+I use the Angular.io tutorial to make it, follow this link to be redirect on the [official tutorial of Angular 2](https://angular.io/docs/ts/latest/tutorial/).
 
 ## Install :
 
