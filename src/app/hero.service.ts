@@ -33,6 +33,15 @@ export class HeroService {
     .catch(this.handleError);
 }
 
+create(name: string): Promise<Hero> {
+  return this.http
+    .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+    .toPromise()
+    .then(res => res.json().data)
+    .catch(this.handleError);
+}
+
+
 update(hero: Hero): Promise<Hero> { //Update method for hero-detail
   const url = `${this.heroesUrl}/${hero.id}`;
   return this.http
@@ -41,5 +50,14 @@ update(hero: Hero): Promise<Hero> { //Update method for hero-detail
     .then(() => hero)
     .catch(this.handleError);
 }
+
+delete(id: number): Promise<void> {
+  const url = `${this.heroesUrl}/${id}`;
+  return this.http.delete(url, {headers: this.headers})
+    .toPromise()
+    .then(() => null)
+    .catch(this.handleError);
+}
+
 
 }
